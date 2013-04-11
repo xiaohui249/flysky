@@ -5,10 +5,10 @@ package dbpool;
  * User: Administrator
  * Date: 13-4-9
  * Time: 下午11:57
- * To change this template use File | Settings | File Templates.
+ * 连接池测试线程
  */
 public class QueryThread implements Runnable {
-    static DBPool pool = DBPool.getInstance(2,10);
+    static DBPool pool = DBPool.getInstance(50,100);
     private String name;
 
     public QueryThread(String name) {

@@ -3,30 +3,27 @@ package dbpool;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Administrator
  * Date: 13-4-9
  * Time: 下午11:32
- * To change this template use File | Settings | File Templates.
+ * 连接池采用阻塞队列实现，结合阻塞存取和非阻塞存取方式，加上AtomaticInteger原子对象
  */
 public class DBPool {
-    private static BlockingQueue<DBConnection> connections;
-    private static int checkOut;
-
-    private static int minPoolSize;
-    private static int maxPoolSize;
+    private BlockingQueue<DBConnection> connections;
+    private AtomicInteger check = new AtomicInteger(0); //正在使用连接数
+    private int minPoolSize;
+    private int maxPoolSize;
 
     private static DBPool instance;
-
-    private final static Semaphore semp = new Semaphore(5);
 
     private DBPool(int min, int max) {
         minPoolSize = min;
         maxPoolSize = max;
 
-        checkOut = 0;
         connections = new ArrayBlockingQueue<DBConnection>(maxPoolSize);
         for(int i=0; i<minPoolSize; i++) {
             connections.offer(new DBConnection());
@@ -41,39 +38,44 @@ public class DBPool {
         return instance;
     }
 
-    public synchronized DBConnection getConn() {
-        System.out.println("**获取连接前**    可用连接数：" + connections.size() + ", 正在使用连接数：" + checkOut);
+    public DBConnection getConn() {
+        System.out.println("**获取连接前**    可用连接数：" + connections.size() + ", 正在使用连接数：" + check.intValue());
         DBConnection conn = null;
         try{
-            System.out.println("剩余信号量：" + semp.availablePermits());
-            semp.acquire();
             conn = connections.poll();
             if(conn == null || conn.isClosed()) {
-                System.out.println("生成新的连接对象......");
-                conn = new DBConnection();
+                if(check.intValue() < maxPoolSize) {
+                    System.out.println("生成新的连接对象......");
+                    conn = new DBConnection();
+                }else{
+                    conn = connections.take();
+                }
             }
-            checkOut++;
+            check.incrementAndGet();
         }catch (InterruptedException e){
             e.printStackTrace();
         }
-        System.out.println("**获取连接后**    可用连接数：" + connections.size() + ", 正在使用连接数：" + checkOut);
+        System.out.println("**获取连接后**    可用连接数：" + connections.size() + ", 正在使用连接数：" + check.intValue());
         return conn;
     }
 
-    public synchronized void freeConn(DBConnection conn) {
-        System.out.println("**释放连接前**    可用连接数：" + connections.size() + ", 正在使用连接数：" + checkOut);
-//        try{
+    public void freeConn(DBConnection conn) {
+        System.out.println("**释放连接前**    可用连接数：" + connections.size() + ", 正在使用连接数：" + check.intValue());
+        try{
             boolean flag = connections.offer(conn);
             if(!flag){
-                System.out.println("关闭连接......");
-                conn.close();
+                if(connections.size() == maxPoolSize) {
+                    System.out.println("关闭连接......");
+                    conn.close();
+                }else{
+                    connections.put(conn);
+                }
             }
-            checkOut--;
-//            semp.release();
-//        }catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+            check.decrementAndGet();
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        System.out.println("**释放连接后**    可用连接数：" + connections.size() + ", 正在使用连接数：" + checkOut);
+        System.out.println("**释放连接后**    可用连接数：" + connections.size() + ", 正在使用连接数：" + check.intValue());
     }
 }

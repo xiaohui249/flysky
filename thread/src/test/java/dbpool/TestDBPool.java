@@ -13,9 +13,14 @@ import java.util.concurrent.Executors;
 public class TestDBPool {
     public static void main(String[] args) {
         ExecutorService exec = Executors.newCachedThreadPool();
-        for(int i=0; i<15; i++) {
+
+        int n = 10000;
+
+        for(int i=0; i<n; i++) {
             exec.execute(new QueryThread("thread"+i));
         }
+
         exec.shutdown();
+
     }
 }

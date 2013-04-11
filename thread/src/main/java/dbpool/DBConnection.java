@@ -1,11 +1,13 @@
 package dbpool;
 
+import java.util.Random;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Administrator
  * Date: 13-4-9
  * Time: 下午11:32
- * To change this template use File | Settings | File Templates.
+ * 简单定义的连接对象
  */
 public class DBConnection {
     private boolean isClosed;
@@ -25,7 +27,7 @@ public class DBConnection {
     public void execute() {
         try{
             System.out.println("executing...");
-            Thread.sleep(1000);
+            Thread.sleep(100*new Random().nextInt(10));
         }catch (InterruptedException e){
             e.printStackTrace();
         }
