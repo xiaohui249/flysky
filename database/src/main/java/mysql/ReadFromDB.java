@@ -144,7 +144,7 @@ public class ReadFromDB {
                     }
                 }
                 index = json.toString();
-                ConfGenerator.generateSpaceConf(tablename, space.intValue(),json, fieldsInfo);
+                ConfGenerator.generateSpaceConf(tablename, space.intValue(), json, fieldsInfo);
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -162,7 +162,7 @@ public class ReadFromDB {
 
     public static void main(String[] args) {
         read();
-//        readTable("tbl_client_android_0");
+//        readTable("tbl_client_android");
     }
 
 }

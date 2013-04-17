@@ -18,6 +18,7 @@ public class Const {
         typeMap.put(-7, Constants.TYPE_SHORT);  //  -7 : TINYINT
         typeMap.put(-6, Constants.TYPE_SHORT);  //  -6 : TINYINT
         typeMap.put(-5, Constants.TYPE_LONG);   //  -5 : BIGINT
+        typeMap.put(1, Constants.TYPE_CHAR);    // 1: CHAR
         typeMap.put(4, Constants.TYPE_INT);     //  4 : INT
         typeMap.put(12, Constants.TYPE_STR);    //  12 : VARCHAR
         typeMap.put(93, Constants.TYPE_STR);   //  93 : DATETIME
@@ -34,6 +35,7 @@ public class Const {
         indexType.put(Constants.TYPE_SHORT, "NUM");
         indexType.put(Constants.TYPE_INT, "NUM");
         indexType.put(Constants.TYPE_STR, "STR");
+        indexType.put(Constants.TYPE_CHAR, "STR");
         indexType.put(Constants.TYPE_BOOL, "STR");
     }
 }
