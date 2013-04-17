@@ -144,6 +144,8 @@ public class ReadFromDB {
                     }
                 }
                 index = json.toString();
+
+                // 生成对应表的SPACE配置信息
                 ConfGenerator.generateSpaceConf(tablename, space.intValue(), json, fieldsInfo);
             }
         }catch (Exception e) {
