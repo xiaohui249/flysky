@@ -131,7 +131,7 @@ public class ReadFromDB {
             String sql = "show index from " + tablename;
             rs = stmt.executeQuery(sql);
             if(rs != null) {
-                JSONObject json = new JSONObject();
+                JSONObject json = new JSONObject(); //存储索引信息的JSON对象
                 while(rs.next()) {
                     String indexName = rs.getString("Key_name");
                     if(json.isNull(indexName)) {
@@ -144,7 +144,7 @@ public class ReadFromDB {
                     }
                 }
                 index = json.toString();
-//                ConfGenerator.generateSpaceConf(space.intValue(),json, fieldsInfo);
+                ConfGenerator.generateSpaceConf(tablename, space.intValue(),json, fieldsInfo);
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -161,8 +161,8 @@ public class ReadFromDB {
     }
 
     public static void main(String[] args) {
-//        read();
-        readTable("tbl_client_android_0");
+        read();
+//        readTable("tbl_client_android_0");
     }
 
 }

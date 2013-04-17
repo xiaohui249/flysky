@@ -24,12 +24,12 @@ public class ConfGenerator {
 
     }
 
-    public static void generateSpaceConf(int space, JSONObject indexes, JSONObject fields) {
+    public static void generateSpaceConf(String tablename, int space, JSONObject indexes, JSONObject fields) {
         BufferedWriter writer = null;
         try{
             writer = new BufferedWriter(new FileWriter(new File(Const.CONF_DIR + configFile), true));
 
-            StringBuffer sb = new StringBuffer();
+            StringBuffer sb = new StringBuffer("# " + tablename + Const.separator);
 
             String start = "space[" +space+ "]";
             sb.append(start + ".enable = 1").append(Const.separator);
@@ -50,21 +50,21 @@ public class ConfGenerator {
                     sb.append(second + ".type = \"TREE\"").append(Const.separator);
                 }
 
-                sb.append(second + ".unique = " + (value.getString("Non_unique").equals("0") ? 1 : 0));
+                sb.append(second + ".unique = " + (value.getString("Non_unique").equals("0") ? 1 : 0)).append(Const.separator);
 
                 for(int j=0; j<columns.length(); j++) {
                     String three = second + ".key_field[" +j+ "]";
 
                     String fieldName = columns.getString(j);
-                    //TODO:根据元数据解析字段信息
                     String fieldInfo[] = fields.getString(fieldName).split("\\|");
                     sb.append(three + ".fieldno = " + fieldInfo[0]).append(Const.separator);
-                    sb.append(three = ".type = \"" +Const.indexType.get(fieldInfo[1])+ "\"").append(Const.separator);
-
+                    sb.append(three + ".type = \"" +Const.indexType.get(fieldInfo[1])+ "\"").append(Const.separator);
                 }
 
             }
-            writer.write(sb.toString());
+
+            writer.write(sb.append(Const.separator).toString());
+
         }catch (Exception e){
             System.out.println("生成Space配置失败！");
             e.printStackTrace();
