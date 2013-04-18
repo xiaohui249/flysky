@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.sql.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -131,22 +133,25 @@ public class ReadFromDB {
             String sql = "show index from " + tablename;
             rs = stmt.executeQuery(sql);
             if(rs != null) {
-                JSONObject json = new JSONObject(); //存储索引信息的JSON对象
+//                JSONObject json = new JSONObject(); //存储索引信息的JSON对象
+                Map<String, JSONObject> map = new LinkedHashMap<String, JSONObject>();  //按插入的先后顺序排列索引，保证PRIMARY索引为第一个索引
                 while(rs.next()) {
                     String indexName = rs.getString("Key_name");
-                    if(json.isNull(indexName)) {
+                    if(map.containsKey(indexName)) {
                         JSONObject jn = new JSONObject();
                         jn.put("Non_unique", rs.getString("Non_unique"));
                         jn.append("columns", rs.getString("Column_name"));
-                        json.put(indexName, jn);
+                        map.put(indexName, jn);
                     }else{
-                        json.getJSONObject(indexName).append("columns",rs.getString("Column_name"));
+                        map.get(indexName).append("columns",rs.getString("Column_name"));
                     }
                 }
+
+                JSONObject json = new JSONObject(map);
                 index = json.toString();
 
                 // 生成对应表的SPACE配置信息
-                ConfGenerator.generateSpaceConf(tablename, space.intValue(), json, fieldsInfo);
+//                ConfGenerator.generateSpaceConf(tablename, space.intValue(), json, fieldsInfo);
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -163,7 +168,8 @@ public class ReadFromDB {
     }
 
     public static void main(String[] args) {
-        read();
+//        read();
+        readTable("tbl_passport_bind_status");
 //        readTable("tbl_client_android");
     }
 

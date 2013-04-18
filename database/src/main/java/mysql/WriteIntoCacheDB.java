@@ -2,7 +2,6 @@ package mysql;
 
 import com.sohu.cachedb.tarantool.config.Constants;
 import com.sohu.cachedb.tarantool.meta.MetaData;
-import com.sohu.cachedb.tarantool.pool.TarantoolSqlConnectionPool;
 import org.tarantool.core.TarantoolConnection;
 import org.tarantool.core.Tuple;
 import org.tarantool.facade.TarantoolTemplate;
@@ -24,7 +23,6 @@ public class WriteIntoCacheDB {
 
     final static SocketChannelPooledConnectionFactory factory =
             new SocketChannelPooledConnectionFactory("10.1.156.188", 33013, 1, 5);
-//    final static TarantoolSqlConnectionPool pool = new TarantoolSqlConnectionPool("10.1.156.188", 33013, 20, 5, 2);
 
     public static void write(File file) {
         if(file.isDirectory()) {
