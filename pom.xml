@@ -13,6 +13,7 @@
         <module>jettySpring</module>
         <module>guice</module>
         <module>database</module>
+        <module>java</module>
     </modules>
 
 
