@@ -19,7 +19,7 @@ public class PersonFilter implements CallbackFilter {
     /**
      * <pre>
      * 选择使用的proxy
-     * 如果调用query函数，则使用第二个proxy
+     * 如果调用getAge函数，则使用第二个proxy
      * 否则，使用第一个proxy
      * </pre>
      */
