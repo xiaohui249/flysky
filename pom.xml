@@ -14,6 +14,7 @@
         <module>guice</module>
         <module>database</module>
         <module>java</module>
+        <module>redis</module>
     </modules>
 
 
