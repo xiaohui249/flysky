@@ -17,6 +17,7 @@
         <module>redis</module>
         <module>indexer</module>
         <module>crawler</module>
+        <module>sql2o</module>
     </modules>
 
 
