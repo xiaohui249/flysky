@@ -55,7 +55,7 @@ public class Query {
 //        int result = insert(test1);
 //        System.out.println("insert result: " + result);
 
-        test.setName("zzz");
+        test.setAge(22);
         int result = update(test);
         System.out.println("update result: " + result);
     }
