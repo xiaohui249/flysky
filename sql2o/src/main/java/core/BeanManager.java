@@ -3,6 +3,7 @@ package core;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.sql.ConnectionPoolDataSource;
 import javax.sql.DataSource;
 
 /**
@@ -21,5 +22,9 @@ public final class BeanManager {
 
     private static synchronized void init() {
         context = new ClassPathXmlApplicationContext("classpath:spring.xml");
+    }
+
+    public static ConnectionPoolDataSource getDruidDataSource() {
+        return context.getBean("druidDataSource", ConnectionPoolDataSource.class);
     }
 }

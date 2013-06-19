@@ -1,3 +1,4 @@
+import core.Executor;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -14,7 +15,8 @@ public class Query {
     private static Sql2o sql2o;
 
     static {
-        sql2o = new Sql2o("jdbc:mysql://localhost:3306/test", "root", "root");
+//        sql2o = new Sql2o("jdbc:mysql://localhost:3306/test", "root", "root");
+        sql2o = Executor.getSql2o();
     }
 
     public static List<Test> getAll() {
@@ -55,7 +57,7 @@ public class Query {
 //        int result = insert(test1);
 //        System.out.println("insert result: " + result);
 
-        test.setAge(22);
+        test.setAge(20);
         int result = update(test);
         System.out.println("update result: " + result);
     }
