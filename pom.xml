@@ -18,6 +18,7 @@
         <module>indexer</module>
         <module>crawler</module>
         <module>sql2o</module>
+        <module>utils</module>
     </modules>
 
 
