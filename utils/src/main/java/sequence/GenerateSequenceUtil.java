@@ -1,4 +1,4 @@
-package utils;
+package sequence;
 
 import java.text.*;
 import java.util.Calendar;

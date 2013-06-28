@@ -1,4 +1,6 @@
-import utils.GenerateSequenceUtil;
+package sequence;
+
+import sequence.GenerateSequenceUtil;
 
 import java.util.HashSet;
 import java.util.Set;

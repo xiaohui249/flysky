@@ -7,7 +7,7 @@ package model;
  * Time: 下午6:12
  * To change this template use File | Settings | File Templates.
  */
-public class Document {
+public class DocumentObj {
     private long id;
     private String title;
     private String desc;
@@ -43,5 +43,9 @@ public class Document {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String toString() {
+        return this.title + " : " + this.url;
     }
 }
