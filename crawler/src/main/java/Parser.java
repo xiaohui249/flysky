@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.util.StringTokenizer;
 
@@ -38,9 +40,9 @@ public class Parser {
     public static String[] getContent(String url) {
         String[] result = null;
         StringBuffer sb = new StringBuffer();
-        HttpGet get = new HttpGet(url);
 
         try {
+            HttpGet get = new HttpGet(url);
             HttpResponse response = httpClient.execute(get);
 
             int code = response.getStatusLine().getStatusCode();
@@ -69,12 +71,20 @@ public class Parser {
                     }
                     result[1] = sb.toString();
 
+//                    if(!encode.equalsIgnoreCase("utf-8")) {
+//                        result[1] = encodeConvertor(result[1], encode, "utf-8");
+//                    }
+
                 }
             }
         }catch (ClientProtocolException e) {
             e.printStackTrace();
         }catch (IOException e) {
             e.printStackTrace();
+        }catch (Exception e) {
+            if(e instanceof URISyntaxException) {
+                return null;
+            }
         }
 
         return result;
@@ -101,6 +111,17 @@ public class Parser {
             e.printStackTrace();
         }
         return encode;
+    }
+
+    public static String encodeConvertor(String str, String fromCharSet, String toCharSet) {
+        String result = null;
+        try {
+            result = new String(str.getBytes(fromCharSet), toCharSet);
+        }catch (UnsupportedEncodingException e) {
+            log.error("不支持的编码转化");
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public static void main(String[] args) {

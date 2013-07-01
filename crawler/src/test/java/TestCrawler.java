@@ -10,11 +10,14 @@ import java.util.concurrent.Executors;
  */
 public class TestCrawler {
 
-    private static ExecutorService service = Executors.newFixedThreadPool(2);
+    private static ExecutorService service = Executors.newFixedThreadPool(10);
 
     public static void main(String[] args) {
-        service.execute(new Crawler("http://news.baidu.com/"));
-//        service.execute(new Crawler());
+        service.execute(new Thread(new Crawler("http://news.sina.com.cn/"), "Spider1"));
+//        for(int i=2; i<=10; i++) {
+//            service.execute(new Thread(new Crawler(), "Spider" +i));
+//        }
+        service.shutdown();
     }
 
 }

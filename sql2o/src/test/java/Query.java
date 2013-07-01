@@ -31,13 +31,20 @@ public class Query {
 
     public static int insert(Test test) {
         String sql = "insert into test(name, age) values (:name, :age)";
-        Connection connection = sql2o.createQuery(sql).addParameter("name", test.getName()).addParameter("age", test.getAge()).executeUpdate();
+        Connection connection = sql2o.createQuery(sql).addParameter("name", "啦啦啦").addParameter("age", test.getAge()).executeUpdate();
         return connection.getResult();
     }
 
     public static int update(Test test) {
         String sql = "update test set name = :name, age = :age where id = :id";
         Connection connection = sql2o.createQuery(sql).addParameter("name", test.getName()).addParameter("age", test.getAge()).addParameter("id", test.getId()).executeUpdate();
+        return connection.getResult();
+    }
+
+    public static int insertDocument() {
+        String sql = "insert into document(id, title, desc, url) values (:id, :title, :desc, :url)";
+        Connection connection = sql2o.createQuery(sql).addParameter("id", 1).addParameter("title", "测试")
+                .addParameter("desc", "测试").addParameter("url", "测试").executeUpdate();
         return connection.getResult();
     }
 
@@ -51,14 +58,16 @@ public class Query {
         System.out.println(test.getName());
 
         //插入测试
-//        Test test1 = new Test();
-//        test1.setName("yyy");
-//        test1.setAge(25);
-//        int result = insert(test1);
-//        System.out.println("insert result: " + result);
+        Test test1 = new Test();
+        test1.setName("你是风儿");
+        test1.setAge(25);
+        int result = insert(test1);
+        System.out.println("insert result: " + result);
 
-        test.setAge(20);
-        int result = update(test);
-        System.out.println("update result: " + result);
+//        test.setName("测试");
+//        int result = update(test);
+//        System.out.println("update result: " + result);
+
+        insertDocument();
     }
 }

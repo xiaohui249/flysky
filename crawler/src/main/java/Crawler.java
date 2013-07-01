@@ -5,7 +5,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import regex.RegExpValidator;
+import sequence.GenerateSequenceUtil;
 
+import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
@@ -39,6 +42,9 @@ public class Crawler implements Runnable {
     public void run() {
         while(true) {
             try {
+
+                log.info(Thread.currentThread().getName() + " has " + waitors.size() + " waitors.");
+
                 String url = waitors.take();
 
                 if(isOver(url)) {   //如果处理过，则跳过
@@ -48,11 +54,21 @@ public class Crawler implements Runnable {
                 log.info(Thread.currentThread().getName() + " starts handle : " + url);
 
                 String[] pageInfo = Parser.getContent(url);
-                DocumentObj dobj = parse(pageInfo[1]);
+                DocumentObj dobj = null;
+                if(pageInfo != null) {
+                    dobj = parse(pageInfo[1], url, pageInfo[0]);
+
+                    //放入数据库
+                    DocumentDao.insert(dobj);
+                }
 
                 addToOver(url);
 
-                log.info(Thread.currentThread().getName() + " " + dobj.toString());
+                if(dobj != null) {
+                    log.info(Thread.currentThread().getName() + " " + dobj.toString());
+                }
+
+                Thread.sleep(1000);
 
             }catch (InterruptedException e) {
                 e.printStackTrace();
@@ -60,7 +76,7 @@ public class Crawler implements Runnable {
         }
     }
 
-    public DocumentObj parse(String html) {
+    public DocumentObj parse(String html, String url, String charset) {
 
         Document doc = Jsoup.parse(html);
 
@@ -71,7 +87,10 @@ public class Crawler implements Runnable {
 
         //处理文章标题
         DocumentObj documentObj = new DocumentObj();
-        String title = titles.get(0).val();
+        documentObj.setId(Long.parseLong(GenerateSequenceUtil.generateSequenceNo()));
+        documentObj.setUrl(url);
+
+        String title = titles.get(0).text();
         documentObj.setTitle(title);
 
         //处理文章摘要
@@ -88,11 +107,12 @@ public class Crawler implements Runnable {
         try {
             for(Element link : links) {
                 String lk = link.attr("abs:href");
-                log.info("======link: " + lk);
-                //TODO:验证URL的有效性
 
-                waitors.put(lk);
-//                waitors.offer(link.attr("href"),1000, TimeUnit.MILLISECONDS);
+                if(RegExpValidator.IsUrl(lk) && lk.startsWith(url)) {
+                    log.info("======link: " + lk);
+//                    waitors.put(lk);
+                    waitors.offer(lk, 1000, TimeUnit.MILLISECONDS);
+                }
             }
         }catch (InterruptedException e) {
             e.printStackTrace();
