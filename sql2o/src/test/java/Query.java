@@ -42,9 +42,9 @@ public class Query {
     }
 
     public static int insertDocument() {
-        String sql = "insert into document(id, title, desc, url) values (:id, :title, :desc, :url)";
-        Connection connection = sql2o.createQuery(sql).addParameter("id", 1).addParameter("title", "测试")
-                .addParameter("desc", "测试").addParameter("url", "测试").executeUpdate();
+        String sql = "insert into document(id, title, descr, url) values (:id, :title, :descr, :url)";
+        Connection connection = sql2o.createQuery(sql).addParameter("id", 9).addParameter("title", "JAVA语言")
+                .addParameter("descr", "JAVA中文世界").addParameter("url", "网址").executeUpdate();
         return connection.getResult();
     }
 
@@ -58,11 +58,11 @@ public class Query {
         System.out.println(test.getName());
 
         //插入测试
-        Test test1 = new Test();
-        test1.setName("你是风儿");
-        test1.setAge(25);
-        int result = insert(test1);
-        System.out.println("insert result: " + result);
+//        Test test1 = new Test();
+//        test1.setName("你是风儿");
+//        test1.setAge(25);
+//        int result = insert(test1);
+//        System.out.println("insert result: " + result);
 
 //        test.setName("测试");
 //        int result = update(test);
