@@ -96,17 +96,22 @@ public class Parser {
             Document doc = Jsoup.connect(url).get();
             Elements es = doc.select("head > meta[http-equiv=Content-Type]");
             if(es.isEmpty()){
-                return encode;
-            }
-            StringTokenizer tokenizer = new StringTokenizer(es.get(0).attr("content"), ";");
-            while(tokenizer.hasMoreTokens()) {
-                String token = tokenizer.nextToken();
-                if(token.toLowerCase().indexOf("charset=") != -1) {
-                    encode = token.split("=")[1];
-                    break;
+                 es = doc.select("head > meta[charset]");
+                if(!es.isEmpty()) {
+                    encode = es.get(0).attr("charset");
+                }
+
+            }else{
+                StringTokenizer tokenizer = new StringTokenizer(es.get(0).attr("content"), ";");
+                while(tokenizer.hasMoreTokens()) {
+                    String token = tokenizer.nextToken();
+                    if(token.toLowerCase().indexOf("charset=") != -1) {
+                        encode = token.split("=")[1];
+                        break;
+                    }
                 }
             }
-            es.get(0).attr("content");
+
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,8 +129,8 @@ public class Parser {
         return result;
     }
 
-    public static void main(String[] args) {
-        String[] info = getContent("http://www.sina.com.cn/");
-        log.info(info[1]);
+    public static void main(String[] args) throws Exception {
+//        String[] info = getContent("http://www.sina.com.cn/");
+//        log.info(info[1]);
     }
 }

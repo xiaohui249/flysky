@@ -1,5 +1,6 @@
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.ConnectionPoolDataSource;
 
@@ -23,5 +24,9 @@ public final class BeanManager {
 
     public static ConnectionPoolDataSource getDruidDataSource() {
         return context.getBean("druidDataSource", ConnectionPoolDataSource.class);
+    }
+
+    public static JdbcTemplate getTemplate() {
+        return context.getBean("jdbcTemplate", JdbcTemplate.class);
     }
 }

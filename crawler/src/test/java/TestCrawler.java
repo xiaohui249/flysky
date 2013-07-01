@@ -13,10 +13,10 @@ public class TestCrawler {
     private static ExecutorService service = Executors.newFixedThreadPool(10);
 
     public static void main(String[] args) {
-        service.execute(new Thread(new Crawler("http://news.sina.com.cn/"), "Spider1"));
-//        for(int i=2; i<=10; i++) {
-//            service.execute(new Thread(new Crawler(), "Spider" +i));
-//        }
+        service.execute(new Thread(new Crawler("http://news.163.com/"), "Spider1"));
+        for(int i=2; i<=10; i++) {
+            service.execute(new Thread(new Crawler(), "Spider" +i));
+        }
         service.shutdown();
     }
 

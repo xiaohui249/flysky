@@ -29,6 +29,8 @@ public class Crawler implements Runnable {
     private static BlockingQueue<String> waitors = new LinkedBlockingQueue<String>(10000);
     private static Set<String> overs = new HashSet<String>();
 
+    private DocumentDao dao = new DocumentDao();
+
     public Crawler() {}
     public Crawler(String url) {
         try {
@@ -59,7 +61,7 @@ public class Crawler implements Runnable {
                     dobj = parse(pageInfo[1], url, pageInfo[0]);
 
                     //放入数据库
-                    DocumentDao.insert(dobj);
+                   dao.insertByTemplate(dobj);
                 }
 
                 addToOver(url);
@@ -103,7 +105,7 @@ public class Crawler implements Runnable {
 
         //处理连接
         Elements links = doc.select("a[href]");
-        log.info("links : " + links.size());
+//        log.info("links : " + links.size());
         try {
             for(Element link : links) {
                 String lk = link.attr("abs:href");
