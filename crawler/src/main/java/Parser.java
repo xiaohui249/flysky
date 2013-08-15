@@ -130,7 +130,7 @@ public class Parser {
     }
 
     public static void main(String[] args) throws Exception {
-//        String[] info = getContent("http://www.sina.com.cn/");
-//        log.info(info[1]);
+        String[] info = getContent("http://www.sina.com.cn/");
+        log.info(info[1]);
     }
 }
