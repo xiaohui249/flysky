@@ -19,6 +19,7 @@
         <module>crawler</module>
         <module>sql2o</module>
         <module>utils</module>
+        <module>cassandra</module>
     </modules>
 
 
