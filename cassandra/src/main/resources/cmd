@@ -1,0 +1,10 @@
+#创建column_family命名脚本
+[default@DEMO] create column family Data
+...     with key_validation_class = 'UTF8Type'
+...     and comparator = 'LongType'
+...     and default_validation_class = 'IntegerType';
+36cac0c5-1cb6-330e-b7b1-c0c27649d1f8
+[default@DEMO] create column family KeyStamp
+...     with key_validation_class = 'UTF8Type'
+...     and comparator = 'LongType'
+...     and default_validation_class = 'IntegerType';
