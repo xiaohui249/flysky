@@ -27,6 +27,12 @@
             <artifactId>slf4j-jdk14</artifactId>
             <version>1.7.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.netflix.astyanax</groupId>
+            <artifactId>astyanax</artifactId>
+            <version>1.56.37</version>
+        </dependency>
     </dependencies>
 
 </project>

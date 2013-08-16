@@ -25,18 +25,20 @@ public class JCassandraClient {
     final static String CODE = "UTF-8";
 
     public static void main(String[] args) throws TTransportException, UnsupportedEncodingException,
-            InvalidRequestException, TException, UnavailableException, TimedOutException {
+            InvalidRequestException, TException, UnavailableException, TimedOutException, NotFoundException {
         TTransport tr = new TFramedTransport(new TSocket("10.13.80.151", 9160));
         TProtocol protocol = new TBinaryProtocol(tr);
         Cassandra.Client client = new Cassandra.Client(protocol);
 
         tr.open();
-        System.out.println("Socket is open ? " + tr.isOpen());
-
+        if(!tr.isOpen()) {
+            System.out.println("failed to connect server!");
+            return;
+        }
 
         String keyspace = "DEMO";  // 类似数据库名
         String columnFamily = "Users";   //类似数据表名
-        String key = "1236";   //类似记录唯一ID或者主键
+        String key = "1237";   //类似记录唯一ID或者主键
         String c1 = "name";
         String c2 = "password";
 
@@ -60,19 +62,29 @@ public class JCassandraClient {
 
         /* 开始查询 */
         SlicePredicate predicate = new SlicePredicate();
-        predicate.setSlice_range(new SliceRange(ByteBuffer.wrap(new byte[0]), ByteBuffer.wrap(new byte[0]), false, 100));
+        predicate.setSlice_range(new SliceRange(toByteBuffer(""), toByteBuffer(""), false, 100));
         List<ColumnOrSuperColumn> columns = client.get_slice(toByteBuffer(key), columnParent, predicate, ConsistencyLevel.ALL);
+        System.out.println("获取一个key对应的多个column：");
         for(ColumnOrSuperColumn column : columns) {
             Column c = column.getColumn();
             System.out.println(toString(c.name) + " -> " + toString(c.value));
         }
 
+        /* 查询单个列 */
+        ColumnPath columnPath = new ColumnPath(columnFamily);
+//        columnPath.setColumn(toByteBuffer(c1));
+//        System.out.println("获取一个key对应的单个指定column：");
+//        System.out.println(c1 + " -> " + toString(client.get(toByteBuffer(key), columnPath, ConsistencyLevel.ONE).column.value));
+
+        /* 删除列或者记录 */
+        client.remove(toByteBuffer(key), columnPath, System.currentTimeMillis(), ConsistencyLevel.ALL);
+
         /* 获取所有的Key */
         KeyRange keyRange = new KeyRange(100);
-        keyRange.setStart_key(ByteBuffer.wrap(new byte[0]));
-        keyRange.setEnd_key(ByteBuffer.wrap(new byte[0]));
+        keyRange.setStart_key(toByteBuffer(""));
+        keyRange.setEnd_key(toByteBuffer(""));
         List<KeySlice> keys = client.get_range_slices(columnParent, predicate, keyRange, ConsistencyLevel.ONE);
-        System.out.println(keys.size());
+        System.out.println("总共包含key的数目：" + keys.size() + "， 以下为key列表：");
         for (KeySlice ks : keys) {
             System.out.println(new String(ks.getKey()));
         }
