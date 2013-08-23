@@ -27,10 +27,10 @@ public class ClientThread implements Runnable {
     /*发送数据缓冲区*/
     private static ByteBuffer receivebuffer = ByteBuffer.allocate(BLOCK);
     /*服务器端地址*/
-    private final static InetSocketAddress SERVER_ADDRESS = new InetSocketAddress("localhost", 8888);
+    private final static InetSocketAddress SERVER_ADDRESS = new InetSocketAddress("localhost", 9123);
 
     public static void main(String[] args) {
-        for(int i=0; i<10000; i++) {
+        for(int i=0; i<10; i++) {
             new Thread(new ClientThread()).start();
         }
     }
