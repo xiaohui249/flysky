@@ -39,7 +39,8 @@ public class AdminServer {
                 return pipeline;
             }
         });
-
+        bootstrap.setOption("tcpNoDelay" , true);
+        bootstrap.setOption("keepAlive", true);
         bootstrap.bind(new InetSocketAddress(port));
         System.out.println("admin server start on "+port);
 
