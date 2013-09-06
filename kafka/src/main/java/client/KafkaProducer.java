@@ -2,8 +2,10 @@ package client;
 
 import kafka.javaapi.producer.Producer;
 import kafka.javaapi.producer.ProducerData;
+import kafka.message.Message;
 import kafka.producer.ProducerConfig;
 
+import java.nio.charset.Charset;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -19,13 +21,13 @@ public class KafkaProducer {
 
         Properties props = new Properties();
         props.put("zk.connect", "10.1.156.198:2181");
-        props.put("serializer.class", "kafka.serializer.StringEncoder");
+        props.put("serializer.class", "kafka.serializer.DefaultEncoder");
         ProducerConfig config = new ProducerConfig(props);
-        Producer<String, String> producer = new Producer<String, String>(config);
+        Producer<String, Message> producer = new Producer<String, Message>(config);
 
         String message = getMessage();
         while(!message.equalsIgnoreCase("quit")) {
-            ProducerData<String, String> data = new ProducerData<String, String>("test", message);
+            ProducerData<String, Message> data = new ProducerData<String, Message>("test", new Message(message.getBytes()));
             producer.send(data);
 
             message = getMessage();
