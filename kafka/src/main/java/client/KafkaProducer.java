@@ -20,6 +20,7 @@ public class KafkaProducer {
     public static void main(String[] args) {
 
         Properties props = new Properties();
+//        props.put("zk.connect", "10.13.80.150:2181,10.13.80.151:2181,10.13.80.152:2181,10.13.80.153:2181,10.13.80.154:2181");
         props.put("zk.connect", "10.1.156.198:2181");
         props.put("serializer.class", "kafka.serializer.DefaultEncoder");
         ProducerConfig config = new ProducerConfig(props);
