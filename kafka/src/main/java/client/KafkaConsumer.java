@@ -25,7 +25,7 @@ public class KafkaConsumer {
     public static void main(String[] args) {
         // specify some consumer properties
         Properties props = new Properties();
-        props.put("zk.connect", "10.1.156.198:2181");
+        props.put("zk.connect", "10.13.81.215:2181,10.13.81.216:2181,10.13.81.217:2181");
         props.put("zk.connectiontimeout.ms", "1000000");
         props.put("groupid", "test_group");
 
@@ -35,8 +35,8 @@ public class KafkaConsumer {
 
         // create 4 partitions of the stream for topic “test”, to allow 4 threads to consume
         Map<String, List<KafkaStream<Message>>> topicMessageStreams =
-                consumerConnector.createMessageStreams(ImmutableMap.of("test", 4));
-        List<KafkaStream<Message>> streams = topicMessageStreams.get("test");
+                consumerConnector.createMessageStreams(ImmutableMap.of("sean", 4));
+        List<KafkaStream<Message>> streams = topicMessageStreams.get("sean");
 
         // create list of 4 threads to consume from each of the partitions
         ExecutorService executor = Executors.newFixedThreadPool(4);
