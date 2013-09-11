@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicLong;
 * User: huixiao200068
 * Date: 13-9-10
 * Time: 上午9:56
-* Kafka producer factory, it could send message to kafka and consume the message from kafka
+* Kafka producer factory, it could send message to kafka
 */
 public class KafkaProducerFactory {
 
