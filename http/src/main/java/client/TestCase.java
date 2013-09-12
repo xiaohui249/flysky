@@ -52,7 +52,10 @@ public class TestCase {
     }
 
     public static void main(String[] args) {
-        TestCase ts = new TestCase(100000, 100000);
-        ts.test(new HttpClientTest("http://localhost:8888"));
+
+        int total = 10000;
+        int current = 1000;
+        TestCase ts = new TestCase(total, current);
+        ts.test(new HttpClientTest("http://localhost:8080/ibatis3Spring/index.do?uid=1"));
     }
 }
