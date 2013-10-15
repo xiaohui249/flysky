@@ -71,7 +71,7 @@ public class GenerateSequenceUtil {
                         .format(new Date()).toString()) * 10000;
                 if (tmpID < ltime) {
                     tmpID = ltime;
-                } else {
+                } else {    //如果1ms之内，出现重复的ltime，则使用临时变量tmpID来区别
                     tmpID = tmpID + 1;
                     ltime = tmpID;
                 }
