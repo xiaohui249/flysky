@@ -12,6 +12,8 @@ import com.nsq.lookup.NSQLookupDynMapImpl;
  */
 public class NSQTest {
 
+    static int i = 0;
+
     public static void main(String[] args) throws Exception {
 //        producerStart();
         consumerStart();
@@ -37,13 +39,14 @@ public class NSQTest {
 
         NSQLookup lookup = new NSQLookupDynMapImpl();
         lookup.addAddr("10.10.76.98", 4161);
+
         NSQConsumer consumer = new NSQConsumer(lookup, "pub_term", "channel1", new NSQMessageCallback() {
             @Override
             public void message(NSQMessage nsqMessage) {
                 try {
                     nsqMessage.finished();
                     String termInfo = new String(nsqMessage.getMessage(), "utf8");
-                    System.out.println(termInfo);
+                    System.out.println((i++) + "---" + termInfo);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
