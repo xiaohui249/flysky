@@ -23,6 +23,7 @@
         <module>guava</module>
         <module>http</module>
         <module>kafka</module>
+        <module>netty</module>
     </modules>
 
 
