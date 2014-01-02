@@ -18,11 +18,6 @@
             <version>5.1.9</version>
         </dependency>
         <dependency>
-            <groupId>com.sohu.smc</groupId>
-            <artifactId>framework-cachedb</artifactId>
-            <version>1.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
@@ -35,7 +30,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20090211</version>
+            <version>20131018</version>
         </dependency>
     </dependencies>
 

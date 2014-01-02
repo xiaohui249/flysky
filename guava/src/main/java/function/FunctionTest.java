@@ -3,7 +3,6 @@ package function;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableList;
-import com.sun.istack.internal.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +22,7 @@ public class FunctionTest {
 
     private static Function<String, String> function = new Function<String, String>() {
         @Override
-        public String apply(@Nullable String s) {
+        public String apply(String s) {
             System.out.println("handle " + s + " ...");
             return "func_" + s;
         }
