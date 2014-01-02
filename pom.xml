@@ -23,6 +23,7 @@
         <module>http</module>
         <module>kafka</module>
         <module>netty</module>
+        <module>nsq</module>
     </modules>
 
 
