@@ -1,7 +1,8 @@
 package com.sean;
 
-import com.nsq.*;
-import com.nsq.lookup.NSQLookupDynMapImpl;
+
+import com.sohu.smc.common.nsq.*;
+import com.sohu.smc.common.nsq.lookup.NSQLookupDynMapImpl;
 
 /**
  * Created with IntelliJ IDEA.

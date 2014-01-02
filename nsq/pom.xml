@@ -11,5 +11,12 @@
 
     <artifactId>nsq</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.sohu.smc</groupId>
+            <artifactId>smc-common-nsq</artifactId>
+            <version>1.5-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
