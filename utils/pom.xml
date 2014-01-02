@@ -11,5 +11,12 @@
 
     <artifactId>utils</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.sohu.smc</groupId>
+            <artifactId>smc-common-util</artifactId>
+            <version>1.5-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
