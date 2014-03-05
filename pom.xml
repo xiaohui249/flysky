@@ -24,6 +24,7 @@
         <module>kafka</module>
         <module>netty</module>
         <module>nsq</module>
+        <module>search</module>
     </modules>
 
 
