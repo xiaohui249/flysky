@@ -7,9 +7,7 @@ import java.util.List;
 public class DataFactory {
     public static DataFactory dataFactory = new DataFactory();
 
-    private DataFactory(){
-
-    }
+    private DataFactory(){}
 
     public DataFactory getInstance(){
         return dataFactory;
