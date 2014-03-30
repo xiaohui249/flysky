@@ -25,6 +25,7 @@
         <module>netty</module>
         <module>nsq</module>
         <module>search</module>
+        <module>mongodb</module>
     </modules>
 
 
