@@ -91,6 +91,32 @@ public class ElasticSearchHandler {
         return list;
     }
 
+    /**
+     * 执行搜索
+     * @param queryBuilder
+     * @param indexname
+     * @param type
+     * @return
+     */
+    public void commonSearcher(QueryBuilder queryBuilder, String indexname, String type){
+
+        SearchResponse searchResponse = client.prepareSearch(indexname).setTypes(type)
+                .setQuery(queryBuilder)
+                .execute()
+                .actionGet();
+        SearchHits hits = searchResponse.getHits();
+        System.out.println("查询到记录数=" + hits.getTotalHits());
+        SearchHit[] searchHists = hits.getHits();
+        if(searchHists.length > 0){
+            for(SearchHit hit:searchHists){
+                String id = hit.getSource().get("id").toString();
+                String name = hit.getSource().get("name").toString();
+                System.out.println("id="+id+",name="+name);
+            }
+        }
+
+    }
+
 
     public static void main(String[] args) {
         String host = "10.201.3.208";

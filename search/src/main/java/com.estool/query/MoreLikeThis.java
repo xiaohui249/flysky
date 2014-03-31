@@ -19,9 +19,9 @@
 
 package com.estool.query;
 
-import java.io.Serializable;
+//import org.elasticsearch.common.Required;
 
-import org.elasticsearch.common.Required;
+import java.io.Serializable;
 
 public class MoreLikeThis implements Serializable {
 
@@ -86,7 +86,7 @@ public class MoreLikeThis implements Serializable {
 	 * The type of document to load from which the "like" query will execute
 	 * with.
 	 */
-	@Required
+//	@Required
 	public MoreLikeThis type(String type) {
 		this.type = type;
 		return this;
@@ -102,7 +102,7 @@ public class MoreLikeThis implements Serializable {
 	/**
 	 * The id of document to load from which the "like" query will execute with.
 	 */
-	@Required
+//	@Required
 	public MoreLikeThis id(String id) {
 		this.id = id;
 		return this;
