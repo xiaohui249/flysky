@@ -21,6 +21,7 @@ public class JsonUtil {
                     .field("id",medicine.getId())
                     .field("name", medicine.getName())
                     .field("funciton",medicine.getFunction())
+                    .field("num", medicine.getNum())
                     .endObject();
             jsonData = jsonBuild.string();
             System.out.println(jsonData);

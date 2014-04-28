@@ -5,6 +5,8 @@ public class Medicine {
     private Integer id;
     private String name;
     private String function;
+    private Integer num;
+    private String highName;
 
     public Medicine() {
         super();
@@ -15,6 +17,14 @@ public class Medicine {
         this.id = id;
         this.name = name;
         this.function = function;
+    }
+
+    public Medicine(Integer id, String name, String function, Integer num) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.function = function;
+        this.num = num;
     }
 
     public Integer getId() {
@@ -39,5 +49,21 @@ public class Medicine {
 
     public void setFunction(String function) {
         this.function = function;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public String getHighName() {
+        return highName;
+    }
+
+    public void setHighName(String highName) {
+        this.highName = highName;
     }
 }
