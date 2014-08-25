@@ -18,11 +18,11 @@
             <version>3.7.0.Final</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.sohu.smc</groupId>
-            <artifactId>smc-common-hsf</artifactId>
-            <version>1.5-SNAPSHOT</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.sohu.smc</groupId>-->
+            <!--<artifactId>smc-common-hsf</artifactId>-->
+            <!--<version>1.5-SNAPSHOT</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 
