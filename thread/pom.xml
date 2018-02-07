@@ -8,6 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>多线程练习模块</description>
 
     <artifactId>thread</artifactId>
 

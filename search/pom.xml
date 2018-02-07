@@ -8,6 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <description>基于ES的搜索代码</description>
 
     <artifactId>search</artifactId>
 
@@ -23,9 +24,9 @@
             <version>2.5.0</version>
         </dependency>
         <dependency>
-            <groupId>org.wltea.analyzer</groupId>
-            <artifactId>IKAnalyzer</artifactId>
-            <version>2012FF_hf1</version>
+            <groupId>com.janeluo</groupId>
+            <artifactId>ikanalyzer</artifactId>
+            <version>2012_u6</version>
         </dependency>
 
         <dependency>

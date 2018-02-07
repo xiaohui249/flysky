@@ -1,12 +1,9 @@
 package com.sean.mongodb;
 
 import com.mongodb.*;
-import org.bson.BSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by xiaohui on 14-3-28.
