@@ -57,8 +57,8 @@ public class JCassandraClient {
 //        column2.setTimestamp(System.currentTimeMillis());
 //
 //        //插入创建的列
-//        client.insert(toByteBuffer(key), columnParent, column1, ConsistencyLevel.ALL);
-//        client.insert(toByteBuffer(key), columnParent, column2, ConsistencyLevel.ALL);
+//        com.sean.flysky.netty.tcp.client.insert(toByteBuffer(key), columnParent, column1, ConsistencyLevel.ALL);
+//        com.sean.flysky.netty.tcp.client.insert(toByteBuffer(key), columnParent, column2, ConsistencyLevel.ALL);
 
         /* 开始查询 */
         SlicePredicate predicate = new SlicePredicate();
@@ -74,7 +74,7 @@ public class JCassandraClient {
         ColumnPath columnPath = new ColumnPath(columnFamily);
 //        columnPath.setColumn(toByteBuffer(c1));
 //        System.out.println("获取一个key对应的单个指定column：");
-//        System.out.println(c1 + " -> " + toString(client.get(toByteBuffer(key), columnPath, ConsistencyLevel.ONE).column.value));
+//        System.out.println(c1 + " -> " + toString(com.sean.flysky.netty.tcp.client.get(toByteBuffer(key), columnPath, ConsistencyLevel.ONE).column.value));
 
         /* 删除列或者记录 */
         client.remove(toByteBuffer(key), columnPath, System.currentTimeMillis(), ConsistencyLevel.ALL);

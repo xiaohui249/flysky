@@ -9,24 +9,27 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>thread</module>
-        <module>jettySpring</module>
-        <module>guice</module>
-        <module>database</module>
-        <module>java</module>
-        <module>redis</module>
-        <module>indexer</module>
-        <module>crawler</module>
-        <module>utils</module>
         <module>cassandra</module>
+        <module>crawler</module>
         <module>guava</module>
+        <module>guice</module>
         <module>http</module>
+        <module>indexer</module>
+        <module>java</module>
+        <module>jettySpring</module>
+        <module>jmessage</module>
         <module>kafka</module>
+        <module>memcache</module>
+        <module>mongodb</module>
         <module>netty</module>
         <module>nsq</module>
+        <module>redis</module>
         <module>search</module>
-        <module>mongodb</module>
-        <module>jmessage</module>
+        <module>tarantool</module>
+        <module>thread</module>
+        <module>utils</module>
+        <module>sphinx</module>
+        <module>sqlite</module>
     </modules>
 
     <!-- 依赖仓库配置 -->

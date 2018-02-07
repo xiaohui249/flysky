@@ -61,7 +61,7 @@ public class NIOClient {
             while (iterator.hasNext()) {
                 selectionKey = iterator.next();
                 if (selectionKey.isConnectable()) {
-                    System.out.println("client could connect!");
+                    System.out.println("com.sean.flysky.netty.tcp.client could connect!");
                     client = (SocketChannel) selectionKey.channel();
                     // 判断此通道上是否正在进行连接操作。
                     // 完成套接字通道的连接过程。
@@ -89,7 +89,7 @@ public class NIOClient {
                 } else if (selectionKey.isWritable()) {
                     sendbuffer.clear();
                     client = (SocketChannel) selectionKey.channel();
-                    sendText = "message from client--" + (flag++);
+                    sendText = "message from com.sean.flysky.netty.tcp.client--" + (flag++);
                     sendbuffer.put(sendText.getBytes());
                     //将缓冲区各标志复位,因为向里面put了数据标志被改变要想从中读取数据发向服务器,就要复位
                     sendbuffer.flip();

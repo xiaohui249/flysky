@@ -1,4 +1,4 @@
-package client;
+package com.sean.flysky.netty.tcp.client;
 
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.buffer.ChannelBuffer;

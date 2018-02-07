@@ -1,4 +1,4 @@
-//package com.estool.client;
+//package com.estool.com.sean.flysky.netty.tcp.client;
 //
 //import java.io.BufferedReader;
 //import java.io.IOException;
@@ -7,7 +7,7 @@
 //import java.util.Map;
 //import java.util.Map.Entry;
 //
-//import org.elasticsearch.client.transport.TransportClient;
+//import org.elasticsearch.com.sean.flysky.netty.tcp.client.transport.TransportClient;
 //import org.elasticsearch.common.settings.ImmutableSettings;
 //import org.elasticsearch.common.settings.ImmutableSettings.Builder;
 //import org.elasticsearch.common.settings.Settings;
@@ -69,12 +69,12 @@
 //			logger.error("read settings error.");
 //		}
 //
-//		final TransportClient client;
+//		final TransportClient com.sean.flysky.netty.tcp.client;
 //		settings = builder.build();
 //		if (null != settings) {
-//			client = new TransportClient(settings);
+//			com.sean.flysky.netty.tcp.client = new TransportClient(settings);
 //		} else {
-//			client = new TransportClient();
+//			com.sean.flysky.netty.tcp.client = new TransportClient();
 //		}
 //
 //		if (null != transportAddresses) {
@@ -82,11 +82,11 @@
 //				if (logger.isInfoEnabled()) {
 //					logger.info("Adding transport address: " + address.getKey() + " port: " + address.getValue());
 //				}
-//				client.addTransportAddress(new InetSocketTransportAddress(address.getKey(), address.getValue()));
+//				com.sean.flysky.netty.tcp.client.addTransportAddress(new InetSocketTransportAddress(address.getKey(), address.getValue()));
 //			}
 //
 //		}
-//		this.transportClient = client;
+//		this.transportClient = com.sean.flysky.netty.tcp.client;
 //	}
 //
 //	public void destroy() throws Exception {

@@ -36,8 +36,8 @@ public class ElasticSearchHandler {
     public ElasticSearchHandler(String ipAddress){
         //集群连接超时设置
 
-//        Settings settings = ImmutableSettings.settingsBuilder().put("client.transport.ping_timeout", "10s").build();
-//        client = new TransportClient(settings);
+//        Settings settings = ImmutableSettings.settingsBuilder().put("com.sean.flysky.netty.tcp.client.transport.ping_timeout", "10s").build();
+//        com.sean.flysky.netty.tcp.client = new TransportClient(settings);
 
         client = new TransportClient().addTransportAddress(new InetSocketTransportAddress(ipAddress, 9300));
     }

@@ -5,7 +5,7 @@
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-    <bean id="Server" class="org.eclipse.jetty.server.Server" init-method="start" destroy-method="stop">
+    <bean id="Server" class="org.eclipse.jetty.Server" init-method="start" destroy-method="stop">
         <property name="connectors">
             <list>
                 <bean id="Connector" class="org.eclipse.jetty.server.nio.SelectChannelConnector">

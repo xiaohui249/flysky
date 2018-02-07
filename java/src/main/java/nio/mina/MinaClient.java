@@ -61,7 +61,7 @@ public class MinaClient {
         @Override
         public void sessionOpened(IoSession session) {
             System.out.println("已连接");
-            session.write("client message");
+            session.write("com.sean.flysky.netty.tcp.client message");
         }
 
         @Override

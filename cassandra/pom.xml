@@ -12,7 +12,7 @@
     <artifactId>cassandra</artifactId>
 
     <dependencies>
-        <!-- apache提供的cassandra java client -->
+        <!-- apache提供的cassandra java com.sean.flysky.netty.tcp.client -->
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
@@ -24,7 +24,7 @@
             <version>1.2.4</version>
         </dependency>
 
-        <!-- netflix公司提供的cassandra Java client -->
+        <!-- netflix公司提供的cassandra Java com.sean.flysky.netty.tcp.client -->
         <dependency>
             <groupId>com.netflix.astyanax</groupId>
             <artifactId>astyanax</artifactId>

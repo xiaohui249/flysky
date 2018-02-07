@@ -1,4 +1,4 @@
-package server;
+package com.sean.flysky.netty.tcp.server;
 
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.*;

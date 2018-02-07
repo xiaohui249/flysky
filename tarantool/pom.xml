@@ -9,13 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>database</artifactId>
+    <artifactId>tarantool</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.tarantool</groupId>
             <artifactId>connector</artifactId>
             <version>0.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix</artifactId>
+            <version>2.2.3-incubating</version>
+            <classifier>client</classifier>
         </dependency>
     </dependencies>
 

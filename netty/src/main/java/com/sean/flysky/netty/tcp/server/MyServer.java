@@ -1,4 +1,4 @@
-package server;
+package com.sean.flysky.netty.tcp.server;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
