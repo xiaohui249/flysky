@@ -13,9 +13,25 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sohu.smc</groupId>
-            <artifactId>smc-common-util</artifactId>
-            <version>1.5-SNAPSHOT</version>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bctsp-jdk15on</artifactId>
+            <version>1.46</version>
+            <type>pom.sig</type>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.54</version>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.5</version>
         </dependency>
     </dependencies>
 
