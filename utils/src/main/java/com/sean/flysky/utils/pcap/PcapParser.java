@@ -83,10 +83,10 @@ public class PcapParser extends Observable {
 						break;
 					}
 
-					createFiles(protocolData);
+//					createFiles(protocolData);
 
-//					LogUtils.printObjInfo(protocolData);
-//					LogUtils.printObj("--------------------------------------");
+					LogUtils.printObjInfo(protocolData);
+					LogUtils.printObj("--------------------------------------");
 				}
 
 				rs = true;
@@ -203,7 +203,7 @@ public class PcapParser extends Observable {
 		int len = DataUtils.byteArrayToInt(buff_4);
 		dataHeader.setLen(len);
 
-//		LogUtils.printObjInfo(dataHeader);
+		LogUtils.printObjInfo(dataHeader);
 
 		return dataHeader;
 	}
@@ -373,7 +373,7 @@ public class PcapParser extends Observable {
 		short frameType = DataUtils.byteArrayToShort(buff_2);
 		dataFrame.setFrameType(frameType);
 
-//		LogUtils.printObjInfo(dataFrame);
+		LogUtils.printObjInfo(dataFrame);
 	}
 
 	private IPHeader readIPHeader(byte[] content) {
@@ -462,7 +462,7 @@ public class PcapParser extends Observable {
 		String destinationIP = builder.toString();
 		protocolData.setDesIP(destinationIP);
 
-//		LogUtils.printObjInfo(ip);
+		LogUtils.printObjInfo(ip);
 
 		return ip;
 	}
@@ -583,7 +583,7 @@ public class PcapParser extends Observable {
 	}
 
 	public static void main(String[] args) throws Exception {
-		File file = new File("E:\\pcap1.pcap");
+		File file = new File("E:\\tcp.pcap");
 		PcapParser parser = new PcapParser(file);
 		parser.parse();
 	}
