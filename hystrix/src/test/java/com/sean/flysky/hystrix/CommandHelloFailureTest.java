@@ -1,5 +1,9 @@
 package com.sean.flysky.hystrix;
 
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
 public class CommandHelloFailureTest {
     @Test
     public void getFallback() throws Exception {
