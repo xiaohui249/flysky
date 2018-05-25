@@ -29,9 +29,9 @@ public class RedisFacotry {
 
         //初始化连接池配置
         poolConfig = new JedisPoolConfig();
-        poolConfig.setMaxActive(50);
+        poolConfig.setMaxTotal(50);
         poolConfig.setMaxIdle(10);
-        poolConfig.setMaxWait(1000);
+        poolConfig.setMaxWaitMillis(1000);
 
        //初始化连接池
         jedisPool = new JedisPool(poolConfig, host, 6379);
