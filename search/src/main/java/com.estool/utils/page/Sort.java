@@ -16,11 +16,7 @@
 package com.estool.utils.page;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * Sort option for queries. You have to provide at least a list of properties to

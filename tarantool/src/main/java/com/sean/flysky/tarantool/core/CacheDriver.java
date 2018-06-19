@@ -3,7 +3,10 @@ package com.sean.flysky.tarantool.core;
 import org.tarantool.facade.TarantoolTemplate;
 import org.tarantool.pool.SocketChannelPooledConnectionFactory;
 
-import java.sql.*;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.DriverPropertyInfo;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Logger;
 

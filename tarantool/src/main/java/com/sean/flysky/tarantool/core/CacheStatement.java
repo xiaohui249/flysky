@@ -7,7 +7,10 @@ import com.salesforce.phoenix.parse.UpsertStatement;
 import org.json.JSONObject;
 import org.tarantool.core.Tuple;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLWarning;
+import java.sql.Statement;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;

@@ -1,10 +1,6 @@
 package com.estool.facets;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.estool.facets.result.FacetsResult;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.search.facet.FacetBuilder;
 import org.elasticsearch.search.facet.terms.TermsFacet;
@@ -12,7 +8,10 @@ import org.elasticsearch.search.facet.terms.TermsFacetBuilder;
 import org.elasticsearch.search.facet.termsstats.TermsStatsFacet;
 import org.elasticsearch.search.facet.termsstats.TermsStatsFacetBuilder;
 
-import com.estool.facets.result.FacetsResult;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class FacetsGet {
 

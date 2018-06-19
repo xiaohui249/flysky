@@ -4,11 +4,7 @@ import com.sean.flysky.utils.pcap.utils.DataUtils;
 import com.sean.flysky.utils.pcap.utils.FileUtils;
 import com.sean.flysky.utils.pcap.utils.LogUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;

@@ -16,7 +16,6 @@ import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.highlight.HighlightField;
-import org.elasticsearch.search.sort.SortOrder;
 
 import java.util.ArrayList;
 import java.util.List;
