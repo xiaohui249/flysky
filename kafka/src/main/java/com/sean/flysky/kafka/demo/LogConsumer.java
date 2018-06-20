@@ -29,7 +29,7 @@ public class LogConsumer {
             logger.error("Failed to load the config file of kafka consumer!");
         }
 
-        KafkaConsumer<String, String> consumer = new KafkaConsumer(props);
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         Collection<String> topics = Arrays.asList(props.getProperty("topics").split(","));
         consumer.subscribe(topics);
         while(true) {
