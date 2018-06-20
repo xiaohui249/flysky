@@ -29,7 +29,9 @@ public class LogProducer {
 
         String topic = "mytopic001";
         Producer<String, String> producer = new KafkaProducer<>(props);
-        for(int i=1000; i<5000; i++) {
+        long s = System.currentTimeMillis();
+        int x = 5000, y = 10000;
+        for(int i=x; i<y; i++) {
             final String value = "message" + i;
             Future<RecordMetadata> future = producer.send(new ProducerRecord<String, String>(topic, value), new Callback() {
                 @Override
@@ -44,6 +46,7 @@ public class LogProducer {
 //            RecordMetadata metadata = future.get();
 //            logger.info("log" + i + ", offset: " + metadata.offset());
         }
+        logger.info("produce {} messages, cost {}ms", y-x, System.currentTimeMillis() - s);
         producer.close();
     }
 }
