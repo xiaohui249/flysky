@@ -7,9 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * LogConsumer
@@ -32,15 +30,26 @@ public class LogConsumer {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         Collection<String> topics = Arrays.asList(props.getProperty("topics").split(","));
         consumer.subscribe(topics);
+        int i=0;
+        long s = System.currentTimeMillis();
+        List<ConsumerRecord<String, String>> buffer = new ArrayList<>();
+        // 批量提交数量
+        final int minBatchSize = 1000;
         while(true) {
             ConsumerRecords<String, String> records = consumer.poll(
                     Long.parseLong(props.getProperty("poll.timeout", "3000")));
             if(!records.isEmpty()) {
                 for(ConsumerRecord<String, String> record : records) {
-                    logger.info("key = " + record.key() + ", value = " + record.value());
+//                    logger.info("key = " + record.key() + ", value = " + record.value());
+                    buffer.add(record);
+                    i++;
+                }
+                if(buffer.size() > minBatchSize) {
+                    consumer.commitAsync();
+                    buffer.clear();
                 }
             } else {
-                logger.info("heartbeat...");
+                logger.info("consume {} messags, cost: {}ms, heartbeat...", i, System.currentTimeMillis() -s);
             }
         }
     }

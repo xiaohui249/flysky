@@ -30,7 +30,7 @@ public class LogProducer {
         String topic = "mytopic001";
         Producer<String, String> producer = new KafkaProducer<>(props);
         long s = System.currentTimeMillis();
-        int x = 5000, y = 10000;
+        int x = 1000000, y = 2000000;
         for(int i=x; i<y; i++) {
             final String value = "message" + i;
             Future<RecordMetadata> future = producer.send(new ProducerRecord<String, String>(topic, value), new Callback() {
@@ -39,7 +39,7 @@ public class LogProducer {
                     if(null != exception) {
                         exception.printStackTrace();
                     } else {
-                        logger.info(value + ", offset: " + metadata.offset());
+//                        logger.info(value + ", offset: " + metadata.offset());
                     }
                 }
             });
