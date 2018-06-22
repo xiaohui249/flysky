@@ -27,10 +27,10 @@ public class LogProducer {
             logger.error("Failed to load the config file of kafka producer!");
         }
 
-        String topic = "mytopic001";
+        String topic = "mytopic";
         Producer<String, String> producer = new KafkaProducer<>(props);
         long s = System.currentTimeMillis();
-        int x = 1000000, y = 2000000;
+        int x = 0, y = 10000;
         for(int i=x; i<y; i++) {
             final String value = "message" + i;
             Future<RecordMetadata> future = producer.send(new ProducerRecord<String, String>(topic, value), new Callback() {
