@@ -4,10 +4,10 @@ import java.util.Set;
 
 public class RedisTest {
 	
-	private final static String HOST = "10.13.81.130";
+	private final static String HOST = "10.7.3.192";
 	private final static int PORT = 6379;
 	
-	private final static int num = 100000;
+	private final static int num = 10000;
 	
 	/**
 	 * @param args
@@ -18,7 +18,7 @@ public class RedisTest {
 
 //		jedis.flushDB();
 
-        testSortSet(jedis);
+//        testSortSet(jedis);
 		
 //		String status = jedis.set("foo", "bar");
 //		System.out.println("foo = bar is set into redis : " + status);
@@ -40,12 +40,12 @@ public class RedisTest {
 //		System.out.println();
 		
 		//压力测试
-//		long start = System.currentTimeMillis();
-//		for(int i = 0; i < num; i++) {
-//			jedis.set("key"+i, "value"+i);
-//		}
-//		System.out.println("Set " +num+" key-values cost time " + (System.currentTimeMillis()-start) + "ms.");
-//
+		long start = System.currentTimeMillis();
+		for(int i = 0; i < num; i++) {
+			jedis.set("key"+i, "value"+i);
+		}
+		System.out.println("Set " +num+" key-values cost time " + (System.currentTimeMillis()-start) + "ms.");
+
 //		start = System.currentTimeMillis();
 //		for(int i = 0; i < num; i++) {
 //			jedis.get("key"+i);
