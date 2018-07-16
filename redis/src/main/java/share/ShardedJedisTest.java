@@ -24,8 +24,8 @@ public class ShardedJedisTest {
         poolConfig.setMaxWaitMillis(2000);
         poolConfig.setTestOnBorrow(true);
 
-        JedisShardInfo shardInfo1 = new JedisShardInfo("10.7.3.191", 6379, 500);
-        JedisShardInfo shardInfo2 = new JedisShardInfo("10.7.3.192", 6379, 500);
+        JedisShardInfo shardInfo1 = new JedisShardInfo("monitor3.cs.os.kkws.cn", 6379, 500);
+        JedisShardInfo shardInfo2 = new JedisShardInfo("monitor4.cs.os.kkws.cn", 6379, 500);
         List<JedisShardInfo> infoList = Arrays.asList(shardInfo1, shardInfo2);
 
         try(ShardedJedisPool shardedJedisPool = new ShardedJedisPool(poolConfig, infoList);
@@ -33,12 +33,13 @@ public class ShardedJedisTest {
 
             long s = System.currentTimeMillis();
             String str;
-            int max = 10000;
+            int max = 100;
             for(int i=0; i<max; i++) {
                 str = "message" + i;
-                jedis.set(str, str);
+//                jedis.set(str, str);
+                logger.info("get message: key = {}, value = {}", str, jedis.get(str));
             }
-            logger.info("set {} messages, cost {}ms", max, System.currentTimeMillis()-s);
+//            logger.info("set {} messages, cost {}ms", max, System.currentTimeMillis()-s);
 
 //            jedis.set("cnblog", "cnblog");
 //            jedis.set("redis", "redis");
@@ -48,12 +49,12 @@ public class ShardedJedisTest {
 //            Client client2 = jedis.getShard("redis").getClient();
 //            Client client3 = jedis.getShard("test").getClient();
 //            Client client4 = jedis.getShard("123456").getClient();
-//
-//            //打印key在哪个server中
-//            System.out.println("cnblog in server:" + client1.getHost() + " and port is:" + client1.getPort());
-//            System.out.println("redis  in server:" + client2.getHost() + " and port is:" + client2.getPort());
-//            System.out.println("test   in server:" + client3.getHost() + " and port is:" + client3.getPort());
-//            System.out.println("123456 in server:" + client4.getHost() + " and port is:" + client4.getPort());
+
+            //打印key在哪个server中
+//            logger.info("cnblog in server:" + client1.getHost() + " and port is:" + client1.getPort());
+//            logger.info("redis  in server:" + client2.getHost() + " and port is:" + client2.getPort());
+//            logger.info("test   in server:" + client3.getHost() + " and port is:" + client3.getPort());
+//            logger.info("123456 in server:" + client4.getHost() + " and port is:" + client4.getPort());
 
 //            System.out.println(jedis.get("cnblog"));
 //            System.out.println(jedis.get("redis"));

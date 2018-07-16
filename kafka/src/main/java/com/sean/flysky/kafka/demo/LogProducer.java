@@ -28,9 +28,13 @@ public class LogProducer {
         }
 
         String topic = "mytopic";
+        notAlwaysProduce(props, topic);
+    }
+
+    public static void notAlwaysProduce(Properties props, String topic) {
         Producer<String, String> producer = new KafkaProducer<>(props);
         long s = System.currentTimeMillis();
-        int x = 0, y = 10000;
+        int x = 0, y = 100000;
         for(int i=x; i<y; i++) {
             final String value = "message" + i;
             Future<RecordMetadata> future = producer.send(new ProducerRecord<String, String>(topic, value), new Callback() {
@@ -48,5 +52,24 @@ public class LogProducer {
         }
         logger.info("produce {} messages, cost {}ms", y-x, System.currentTimeMillis() - s);
         producer.close();
+    }
+
+    public static void alwaysProduce(Properties props, String topic) {
+        Producer<String, String> producer = new KafkaProducer<>(props);
+        int i = 1;
+        while(true) {
+            final String value = "message" + i;
+            producer.send(new ProducerRecord<String, String>(topic, value), new Callback() {
+                @Override
+                public void onCompletion(RecordMetadata metadata, Exception exception) {
+                    if(null != exception) {
+                        exception.printStackTrace();
+                    } else {
+                        logger.info(value + ", offset: " + metadata.offset());
+                    }
+                }
+            });
+            i++;
+        }
     }
 }
