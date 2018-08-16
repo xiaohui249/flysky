@@ -10,6 +10,7 @@ import in.zapr.druid.druidry.granularity.Granularity;
 import in.zapr.druid.druidry.granularity.PredefinedGranularity;
 import in.zapr.druid.druidry.granularity.SimpleGranularity;
 import in.zapr.druid.druidry.query.aggregation.DruidTopNQuery;
+import in.zapr.druid.druidry.query.search.DruidSearchQuery;
 import in.zapr.druid.druidry.topNMetric.SimpleMetric;
 import in.zapr.druid.druidry.topNMetric.TopNMetric;
 import org.joda.time.DateTime;
@@ -32,8 +33,8 @@ public class MyDruidClientTest {
 
     @Test
     public void query() throws Exception {
-        DateTime startTime = new DateTime(2018, 6, 28, 0, 0, 0, DateTimeZone.UTC);
-        DateTime endTime = new DateTime(2018, 6, 29, 0, 0, 1, DateTimeZone.UTC);
+        DateTime startTime = new DateTime(2018, 8, 9, 0, 0, 0, DateTimeZone.UTC);
+        DateTime endTime = new DateTime(2018, 8, 10, 0, 0, 1, DateTimeZone.UTC);
         Interval interval = new Interval(startTime, endTime);
 
         Granularity granularity = new SimpleGranularity(PredefinedGranularity.ALL);
@@ -43,7 +44,7 @@ public class MyDruidClientTest {
         TopNMetric metric = new SimpleMetric("count");
 
         DruidTopNQuery query = DruidTopNQuery.builder()
-                .dataSource("dataset-trans")
+                .dataSource("trans-kafka")
                 .dimension(dimension)
                 .threshold(10)
                 .topNMetric(metric)
@@ -59,5 +60,4 @@ public class MyDruidClientTest {
         String result = myDruidClient.query(query);
         logger.info("Query result: {}", result);
     }
-
 }
