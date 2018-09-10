@@ -33,6 +33,7 @@
         <module>hystrix</module>
         <module>druid</module>
         <module>mysql</module>
+        <module>flysky-activemq</module>
     </modules>
 
     <!-- 依赖仓库配置 -->
