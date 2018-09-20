@@ -63,7 +63,7 @@ public class AnotherCodeGenerator {
                 .setEntityLombokModel(false)
                 .setDbColumnUnderline(true)
                 .setRestControllerStyle(true)
-                .entityTableFieldAnnotationEnable(false)
+                .entityTableFieldAnnotationEnable(true)
                 .setNaming(NamingStrategy.underline_to_camel)
                 //修改替换成你需要的表名，多个表名传数组
                 .setInclude(tableNames);
