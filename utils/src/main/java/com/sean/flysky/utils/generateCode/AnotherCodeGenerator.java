@@ -44,18 +44,21 @@ public class AnotherCodeGenerator {
         //user -> UserService, 设置成true: user -> IUserService
         boolean serviceNameStartWithI = true;
         generateByTables(serviceNameStartWithI, packageName,
-                "user");
+                "users");
     }
 
     private static void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {
         GlobalConfig config = new GlobalConfig();
-        String dbUrl = "jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useSSL=true";
+//        String dbUrl = "jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useSSL=true";
+        String dbUrl = "jdbc:oracle:thin:@192.168.20.2:1521:motion";
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setDbType(DbType.MYSQL)
+//        dataSourceConfig.setDbType(DbType.MYSQL)
+        dataSourceConfig.setDbType(DbType.ORACLE)
                 .setUrl(dbUrl)
-                .setUsername("root")
-                .setPassword("123456")
-                .setDriverName("com.mysql.jdbc.Driver");
+                .setUsername("fus")
+                .setPassword("fus")
+//                .setDriverName("com.mysql.jdbc.Driver");
+                .setDriverName("oracle.jdbc.driver.OracleDriver");
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig
                 .setSuperControllerClass("com.kayak.hjb.fotic.common.core.BaseController")

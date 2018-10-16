@@ -17,8 +17,9 @@ import java.util.Set;
 public class SentinelJedisTest {
     public static void main(String[] args) {
         JedisPoolConfig poolConfig = new JedisPoolConfig();
-        String masterName = "cluster1";
+        String masterName = "fotic-cluster";
         Set<String> sentinels = new HashSet<String>();
+        sentinels.add("monitor2.cs.os.kkws.cn:26379");
         sentinels.add("monitor3.cs.os.kkws.cn:26379");
         sentinels.add("monitor4.cs.os.kkws.cn:26379");
         JedisSentinelPool jedisSentinelPool = new JedisSentinelPool(masterName, sentinels, poolConfig);
