@@ -17,7 +17,7 @@ import java.util.Arrays;
  * @create 2018-09-19 16:58
  **/
 public class AnotherCodeGenerator {
-    private static String packageName = "com.kayak.hjb.fotic.user.center";
+    private static String packageName = "com.kayak.hjb.fotic.service.api";
     private static String outDir = "E://genCode";
     private static String entity = "entity";
     private static String mapper = "mapper";
@@ -44,7 +44,7 @@ public class AnotherCodeGenerator {
         //user -> UserService, 设置成true: user -> IUserService
         boolean serviceNameStartWithI = true;
         generateByTables(serviceNameStartWithI, packageName,
-                "users");
+                "fn_hb_front_log", "sys_notice_info", "sys_url_info");
     }
 
     private static void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {

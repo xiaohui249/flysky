@@ -34,6 +34,7 @@
         <module>druid</module>
         <module>mysql</module>
         <module>flysky-activemq</module>
+        <module>flysky-fastdfs</module>
     </modules>
 
     <!-- 依赖仓库配置 -->
