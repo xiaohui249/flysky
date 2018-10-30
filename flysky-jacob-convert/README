@@ -1,0 +1,5 @@
+程序运行基本条件：
+1、本地安装Office软件；
+2、下载jacob.zip ,地址：https://sourceforge.net/projects/jacob-project/
+3、将解压得到的jacob.dll放到jdk/bin目录中；
+4、将解压得到的jacob.jar引入java程序；

@@ -35,6 +35,7 @@
         <module>mysql</module>
         <module>flysky-activemq</module>
         <module>flysky-fastdfs</module>
+        <module>jacob-convert</module>
     </modules>
 
     <!-- 依赖仓库配置 -->
