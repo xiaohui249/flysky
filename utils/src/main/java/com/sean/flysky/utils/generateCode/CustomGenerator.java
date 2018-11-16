@@ -38,7 +38,7 @@ public class CustomGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-//        dsc.setDbType(DbType.ORACLE);
+        dsc.setDbType(DbType.ORACLE);
 
         /*dsc.setTypeConvert(new MySqlTypeConvert(){
             // 自定义数据库表字段类型转换【可选】
@@ -49,25 +49,25 @@ public class CustomGenerator {
             }
         });*/
 
-//        dsc.setDriverName("oracle.jdbc.driver.OracleDriver");
-//        dsc.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
-//        dsc.setUsername("hjbamp");
-//        dsc.setPassword("Hjbamp123");
-//        mpg.setDataSource(dsc);
-
-        dsc.setDbType(DbType.MYSQL);
-        dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/test");
-        dsc.setUsername("root");
-        dsc.setPassword("123456");
+        dsc.setDriverName("oracle.jdbc.driver.OracleDriver");
+        dsc.setUrl("jdbc:oracle:thin:@192.168.20.2:1521:motion");
+        dsc.setUsername("fus");
+        dsc.setPassword("fus");
         mpg.setDataSource(dsc);
+
+//        dsc.setDbType(DbType.MYSQL);
+//        dsc.setDriverName("com.mysql.jdbc.Driver");
+//        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/test");
+//        dsc.setUsername("root");
+//        dsc.setPassword("123456");
+//        mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
         // strategy.setTablePrefix(new String[] { "tlog_", "tsys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-         strategy.setInclude(new String[] { "user_location" }); // 需要生成的表
+         strategy.setInclude(new String[] { "fn_cfca_called_log" }); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
 
         strategy.setSuperServiceClass(null);

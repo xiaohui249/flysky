@@ -15,7 +15,7 @@ import javax.jms.*;
 public class Producer {
     static String NAME = ActiveMQConnection.DEFAULT_USER;   //admin
     static String PSWD = ActiveMQConnection.DEFAULT_PASSWORD;   //admin
-    static String URL = "tcp://192.168.20.2:9885";
+    static String URL = "tcp://192.168.20.2:20663";
     static ConnectionFactory connectionFactory;
     static Connection connection;
     static Session session;
@@ -25,7 +25,7 @@ public class Producer {
 
     public static void main(String[] args) {
         //链接工厂，用来创建链接
-        connectionFactory = new ActiveMQConnectionFactory(Producer.NAME, Producer.PSWD, Producer.URL);
+        connectionFactory = new ActiveMQConnectionFactory("kayak", "123456", Producer.URL);
 
         try {
             //创建链接

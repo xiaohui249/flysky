@@ -44,7 +44,7 @@ public class AnotherCodeGenerator {
         //user -> UserService, 设置成true: user -> IUserService
         boolean serviceNameStartWithI = true;
         generateByTables(serviceNameStartWithI, packageName,
-                "t1_cust_info", "sys_param");
+                "fn_hb_front_log");
     }
 
     private static void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {
@@ -55,8 +55,10 @@ public class AnotherCodeGenerator {
 //        dataSourceConfig.setDbType(DbType.MYSQL)
         dataSourceConfig.setDbType(DbType.ORACLE)
                 .setUrl(dbUrl)
-                .setUsername("kwise")
-                .setPassword("New#12rt")
+                .setUsername("fus")
+                .setPassword("fus")
+//                .setUsername("kwise")
+//                .setPassword("New#12rt")
 //                .setDriverName("com.mysql.jdbc.Driver");
                 .setDriverName("oracle.jdbc.driver.OracleDriver");
         StrategyConfig strategyConfig = new StrategyConfig();
