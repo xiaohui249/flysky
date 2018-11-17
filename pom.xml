@@ -14,7 +14,6 @@
         <module>guava</module>
         <module>guice</module>
         <module>http</module>
-        <module>indexer</module>
         <module>java</module>
         <module>jettySpring</module>
         <!--<module>jmessage</module>-->
@@ -35,7 +34,8 @@
         <module>mysql</module>
         <module>flysky-activemq</module>
         <module>flysky-fastdfs</module>
-        <module>jacob-convert</module>
+        <module>flysky-jacob-convert</module>
+        <module>flysky-file</module>
     </modules>
 
     <!-- 依赖仓库配置 -->

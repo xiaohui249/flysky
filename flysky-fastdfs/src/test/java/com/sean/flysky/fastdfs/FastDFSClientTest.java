@@ -12,7 +12,7 @@ import java.io.*;
  **/
 public class FastDFSClientTest {
     public static void main(String[] args) throws Exception {
-        File file = new File("E:/外贸管理台开发计划表-20181011.xlsx");
+        File file = new File("E:/Web开发技术导图.png");
         String fileName = file.getName();
         FastDFSFile dfsFile = new FastDFSFile();
         dfsFile.setName(fileName);
