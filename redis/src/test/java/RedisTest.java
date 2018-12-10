@@ -1,10 +1,14 @@
 import redis.clients.jedis.Jedis;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.Set;
 
 public class RedisTest {
 	
-	private final static String HOST = "10.7.3.192";
+	private final static String HOST = "192.168.20.2";
 	private final static int PORT = 6379;
 	
 	private final static int num = 10000;
@@ -12,9 +16,10 @@ public class RedisTest {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		
 		Jedis jedis = new Jedis(HOST, PORT);
+
 
 //		jedis.flushDB();
 
@@ -40,11 +45,11 @@ public class RedisTest {
 //		System.out.println();
 		
 		//压力测试
-		long start = System.currentTimeMillis();
-		for(int i = 0; i < num; i++) {
-			jedis.set("key"+i, "value"+i);
-		}
-		System.out.println("Set " +num+" key-values cost time " + (System.currentTimeMillis()-start) + "ms.");
+//		long start = System.currentTimeMillis();
+//		for(int i = 0; i < num; i++) {
+//			jedis.set("key"+i, "value"+i);
+//		}
+//		System.out.println("Set " +num+" key-values cost time " + (System.currentTimeMillis()-start) + "ms.");
 
 //		start = System.currentTimeMillis();
 //		for(int i = 0; i < num; i++) {
@@ -52,8 +57,21 @@ public class RedisTest {
 //		}
 //		System.out.println("Get " +num+" key-values cost time " + (System.currentTimeMillis()-start) + "ms.");
 
+		testTokenCode(jedis);
 
-		
+	}
+
+	/**
+	 * 测试token编码问题
+	 * @param jedis
+	 */
+	public static void testTokenCode(Jedis jedis) throws Exception {
+		jedis.auth("123456");
+		String key = "889854342FE659DF5B5B6F604E94754E";
+//		String jsonStr = jedis.get(key);
+//		System.out.println(jsonStr);
+		byte[] byteValue = jedis.get(key.getBytes("GBK"));
+		System.out.println(new String(byteValue, "GBK"));
 	}
 
     public static void testSortSet(Jedis jedis) {
@@ -65,4 +83,43 @@ public class RedisTest {
         }
     }
 
+	public static String gb2312ToUtf8(String str) {
+		String urlEncode = "" ;
+		try {
+			urlEncode = URLEncoder.encode (str, "UTF-8" );
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return urlEncode;
+	}
+
+	public static String getUTF8StringFromGBKString(String gbkStr) {
+		try {
+			return new String(getUTF8BytesFromGBKString(gbkStr), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			throw new InternalError();
+		}
+	}
+
+	public static byte[] getUTF8BytesFromGBKString(String gbkStr) {
+		int n = gbkStr.length();
+		byte[] utfBytes = new byte[3 * n];
+		int k = 0;
+		for (int i = 0; i < n; i++) {
+			int m = gbkStr.charAt(i);
+			if (m < 128 && m >= 0) {
+				utfBytes[k++] = (byte) m;
+				continue;
+			}
+			utfBytes[k++] = (byte) (0xe0 | (m >> 12));
+			utfBytes[k++] = (byte) (0x80 | ((m >> 6) & 0x3f));
+			utfBytes[k++] = (byte) (0x80 | (m & 0x3f));
+		}
+		if (k < utfBytes.length) {
+			byte[] tmp = new byte[k];
+			System.arraycopy(utfBytes, 0, tmp, 0, k);
+			return tmp;
+		}
+		return utfBytes;
+	}
 }
