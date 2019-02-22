@@ -44,7 +44,7 @@ public class AnotherCodeGenerator {
         //user -> UserService, 设置成true: user -> IUserService
         boolean serviceNameStartWithI = true;
         generateByTables(serviceNameStartWithI, packageName,
-                "FN_CUST_SHARE", "FN_CUST_SHARE_LOG", "FN_PROD_INFO");
+                "fn_prod_share_rollback_error");
     }
 
     private static void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {
