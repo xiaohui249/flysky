@@ -36,6 +36,7 @@
         <module>flysky-fastdfs</module>
         <module>flysky-jacob-convert</module>
         <module>flysky-file</module>
+        <module>flysky-influxdb</module>
     </modules>
 
     <!-- 依赖仓库配置 -->

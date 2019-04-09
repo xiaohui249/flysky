@@ -15,7 +15,7 @@ import javax.jms.*;
 public class Producer {
     static String NAME = ActiveMQConnection.DEFAULT_USER;   //admin
     static String PSWD = ActiveMQConnection.DEFAULT_PASSWORD;   //admin
-    static String URL = "tcp://192.168.20.2:20663";
+    static String URL = "tcp://10.7.2.6:61616";
     static ConnectionFactory connectionFactory;
     static Connection connection;
     static Session session;
