@@ -17,7 +17,7 @@ public class InfluxDBTest {
     private InfluxDBConnect influxDB;
     private String username = "test";//用户名
     private String password = "123456";//密码
-    private String openurl = "http://10.7.3.88:8086";//连接地址
+    private String openurl = "http://localhost:8086";//连接地址
     private String database = "test";//数据库
     private String measurement = "sys_code";
 

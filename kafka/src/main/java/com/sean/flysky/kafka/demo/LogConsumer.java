@@ -92,4 +92,6 @@ public class LogConsumer {
     public static void syncDoWork(ConsumerRecord<String, String> record) {
         logger.info("key = " + record.key() + ", value = " + record.value());
     }
+
+
 }

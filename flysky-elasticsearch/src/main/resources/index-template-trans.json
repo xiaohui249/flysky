@@ -1,0 +1,52 @@
+{
+  "template": "trans-*",
+  "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+  },
+  "mappings": {
+      "transaction": {
+          "properties": {
+              "mon_sid": {
+                  "type": "keyword"
+              },
+              "target_ip": {
+                  "type": "ip"
+              },
+              "target_port": {
+                  "type": "keyword"
+              },
+              "source_ip": {
+                  "type": "ip"
+              },
+              "tran_name": {
+                  "type": "keyword"
+              },
+              "tran_timestamp": {
+                  "type": "date",
+                  "format": "YYYY-MM-dd HH:mm:ss.S"
+              },
+              "channel": {
+                  "type": "keyword"
+              },
+              "tran_cost": {
+                  "type": "integer"
+              },
+              "ret_code": {
+                  "type": "keyword"
+              },
+              "ret_msg": {
+                  "type": "text",
+                  "analyzer": "ik_max_word",
+                  "search_analyzer": "ik_max_word"
+              },
+              "tran_result": {
+                  "type": "keyword"
+              },
+              "excp_stat": {
+                  "type": "keyword"
+              }
+          }
+      }
+  }
+}

@@ -2,11 +2,17 @@ package com.sean.flysky.influxdb;
 
 import org.influxdb.InfluxDB;
 import org.influxdb.InfluxDBFactory;
+import org.influxdb.annotation.Column;
+import org.influxdb.annotation.Measurement;
 import org.influxdb.dto.Point;
 import org.influxdb.dto.Query;
 import org.influxdb.dto.QueryResult;
 
+import java.lang.reflect.Field;
+import java.time.Instant;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author xiaoh
@@ -87,6 +93,41 @@ public class InfluxDBConnect {
      */
     public void createDB(String dbName){
         influxDB.createDatabase(dbName);
+    }
+
+    public InfluxDB getInfluxDB() {
+        return influxDB;
+    }
+
+    public Point convertToPoint(Object obj) throws Exception {
+        Class clz = obj.getClass();
+        String name = ((Measurement) clz.getAnnotation(Measurement.class)).name();
+        Point.Builder builder = Point.measurement(name);
+        Field[] fields = clz.getDeclaredFields();
+        Map<String, Object> fieldMaps = new TreeMap();
+        for (Field field : fields){
+            if (!field.isAccessible()) {
+                field.setAccessible(true);
+            }
+            Column column =  field.getAnnotation(Column.class);
+            if(column != null){
+                Object value = field.get(obj);
+                if(value==null)continue;
+                if ("time".equals(column.name())) {
+//                    Instant timeT = Instant.parse((String)value);
+                    builder.time(((Instant) value).toEpochMilli(), TimeUnit.MILLISECONDS);
+                } else {
+                    if (column.tag()) {
+                        builder.tag(column.name(), String.valueOf(value));
+                    } else {
+                        fieldMaps.put(column.name(),value);
+                    }
+                }
+            }
+        }
+        builder.fields(fieldMaps);
+        Point point = builder.build();
+        return point;
     }
 
     /**
