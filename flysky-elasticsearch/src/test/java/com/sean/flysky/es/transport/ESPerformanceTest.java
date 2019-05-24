@@ -1,8 +1,8 @@
-package com.sean.flysky.es;
+package com.sean.flysky.es.transport;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sean.flysky.es.entity.ItmTranDeltFactory;
 import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.transport.Transport;
 import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Assert;

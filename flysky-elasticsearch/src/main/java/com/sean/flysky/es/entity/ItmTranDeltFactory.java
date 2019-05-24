@@ -1,4 +1,4 @@
-package com.sean.flysky.es;
+package com.sean.flysky.es.entity;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sean.flysky.utils.sequence.IdWorker;

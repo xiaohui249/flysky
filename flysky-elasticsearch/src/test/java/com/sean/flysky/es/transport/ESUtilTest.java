@@ -1,6 +1,7 @@
-package com.sean.flysky.es;
+package com.sean.flysky.es.transport;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sean.flysky.es.entity.ItmTranDeltFactory;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;

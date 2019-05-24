@@ -1,4 +1,4 @@
-package com.sean.flysky.es;
+package com.sean.flysky.es.transport;
 
 
 import com.alibaba.fastjson.JSONObject;
