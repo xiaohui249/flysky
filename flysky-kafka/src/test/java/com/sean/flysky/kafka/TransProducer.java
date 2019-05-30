@@ -1,10 +1,14 @@
 package com.sean.flysky.kafka;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.kafka.clients.producer.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Future;
 
@@ -33,7 +37,9 @@ public class TransProducer {
             System.exit(0);
         }
 //        alwaysProduce(props, topic);
-        notAlwaysProduce(props, topic);
+//        notAlwaysProduce(props, topic);
+        produceFromFile(props, topic, "E:\\tranInfo.txt");
+
     }
 
     /**
@@ -90,6 +96,31 @@ public class TransProducer {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void produceFromFile(Properties props, String topic, String file) {
+        Producer<String, Map> producer = new KafkaProducer<>(props);
+
+        try(BufferedReader reader = new BufferedReader(new FileReader((file)))) {
+            String content;
+            long s = System.currentTimeMillis();
+            while((content = reader.readLine()) != null) {
+                Map<String, String> value = JSON.parseObject(content, Map.class);
+                producer.send(new ProducerRecord<>(topic, value), new Callback() {
+                    @Override
+                    public void onCompletion(RecordMetadata metadata, Exception exception) {
+                        if(null != exception) {
+                            exception.printStackTrace();
+                        } else {
+                            logger.info("offset: " + metadata.offset());
+                        }
+                    }
+                });
+            }
+            System.out.println("buffer reader cost: " + (System.currentTimeMillis() - s));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -9,6 +9,13 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>flysky-activemq</module>
+        <module>flysky-fastdfs</module>
+        <module>flysky-jacob-convert</module>
+        <module>flysky-file</module>
+        <module>flysky-influxdb</module>
+        <module>flysky-elasticsearch</module>
+        <module>flysky-kafka</module>
         <module>cassandra</module>
         <module>crawler</module>
         <module>guava</module>
@@ -17,7 +24,6 @@
         <module>java</module>
         <module>jettySpring</module>
         <!--<module>jmessage</module>-->
-        <module>kafka</module>
         <module>memcache</module>
         <module>mongodb</module>
         <module>netty</module>
@@ -32,12 +38,6 @@
         <module>hystrix</module>
         <module>druid</module>
         <module>mysql</module>
-        <module>flysky-activemq</module>
-        <module>flysky-fastdfs</module>
-        <module>flysky-jacob-convert</module>
-        <module>flysky-file</module>
-        <module>flysky-influxdb</module>
-        <module>flysky-elasticsearch</module>
     </modules>
 
     <!-- 依赖仓库配置 -->

@@ -33,7 +33,6 @@ public class PropertyUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-
             if (inputStream != null)
                 try {
                     inputStream.close();
@@ -55,5 +54,4 @@ public class PropertyUtil {
 
         return url;
     }
-
 }
