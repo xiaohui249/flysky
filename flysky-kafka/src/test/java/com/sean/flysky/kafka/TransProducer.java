@@ -102,10 +102,12 @@ public class TransProducer {
     public static void produceFromFile(Properties props, String topic, String file) {
         Producer<String, Map> producer = new KafkaProducer<>(props);
 
-        try(BufferedReader reader = new BufferedReader(new FileReader((file)))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader((file)), 5*1024*1024)) {
             String content;
             long s = System.currentTimeMillis();
+            int count = 0;
             while((content = reader.readLine()) != null) {
+                count++;
                 Map<String, String> value = JSON.parseObject(content, Map.class);
                 producer.send(new ProducerRecord<>(topic, value), new Callback() {
                     @Override
@@ -117,10 +119,14 @@ public class TransProducer {
                         }
                     }
                 });
+//                Future<RecordMetadata> future = producer.send(new ProducerRecord<>(topic, value));
+//                RecordMetadata metadata = future.get();   // 同步生产
+//                logger.info("log" + count + ", offset: " + metadata.offset());
             }
-            System.out.println("buffer reader cost: " + (System.currentTimeMillis() - s));
-        } catch (IOException e) {
-            e.printStackTrace();
+            producer.close();
+            System.out.println("buffer reader size: " + count + ", cost: " + (System.currentTimeMillis() - s));
+        } catch (Exception e) {
+            logger.error("读取文件信息发送至kafka失败！", e);
         }
     }
 }

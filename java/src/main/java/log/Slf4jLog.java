@@ -17,5 +17,11 @@ public class Slf4jLog {
         logger.info( " 222 " );
         logger.warn( " 333 " );
         logger.error( " 444 " );
+        try {
+            int a = 3 / 0;
+            System.out.println(a);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

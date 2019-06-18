@@ -1,7 +1,10 @@
 package log;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,5 +21,8 @@ public class CommonLog {
         log.warn( " 333 " );
         log.error( " 444 " );
         log.fatal( " 555 " );
+
+        String s = "jj,ii,";
+        log.info(Arrays.toString(StringUtils.split(s, ",")));
     }
 }
