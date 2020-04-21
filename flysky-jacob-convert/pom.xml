@@ -18,9 +18,9 @@
             <version>19.0</version>
         </dependency>
         <dependency>
-            <groupId>com.kayak</groupId>
+            <groupId>com.hynnet</groupId>
             <artifactId>jacob</artifactId>
-            <version>1.19</version>
+            <version>1.18</version>
         </dependency>
     </dependencies>
 
