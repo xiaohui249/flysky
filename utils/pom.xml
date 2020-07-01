@@ -13,7 +13,7 @@
 
     <properties>
         <oracle-connector-version>11.2.0.3</oracle-connector-version>
-        <mysql-connector-version>5.1.29</mysql-connector-version>
+        <mysql-connector-version>8.0.16</mysql-connector-version>
     </properties>
 
     <dependencies>
