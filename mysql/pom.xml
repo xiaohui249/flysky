@@ -13,7 +13,7 @@
     <description>mysql数据库性能测试</description>
 
     <properties>
-        <mysql-connector-version>5.1.29</mysql-connector-version>
+        <mysql-connector-version>8.0.16</mysql-connector-version>
         <commons-dbutils.version>1.6</commons-dbutils.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <commons-pool.version>1.6</commons-pool.version>
