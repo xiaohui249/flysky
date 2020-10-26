@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-10-26T07:30:23.908Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36" etag="GhMhOVVUgAnX3qy9LUTf" version="13.8.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-26T07:30:38.207Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36" etag="lmyyAbEKgjvLner1H6AB" version="13.8.2" type="github">
   <diagram id="CPVGw4qfTaVwC1uuWheQ" name="Page-1">
     <mxGraphModel dx="1038" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -92,7 +92,7 @@
             <mxPoint x="521" y="260" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="k36olB4mfA_4aG-BBfn8-37" value="适配器" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="k36olB4mfA_4aG-BBfn8-37" value="适配器" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="190" y="230" width="450" height="40" as="geometry" />
         </mxCell>
       </root>
