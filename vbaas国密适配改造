@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-10-26T06:48:24.098Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36" etag="dX7RYaRtXxiWjWPx0d-r" version="13.8.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-26T06:53:54.327Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36" etag="MiiAUCOXMyq4raNnEWd8" version="13.8.2" type="github">
   <diagram id="CPVGw4qfTaVwC1uuWheQ" name="Page-1">
     <mxGraphModel dx="1038" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -30,6 +30,33 @@
         </mxCell>
         <mxCell id="k36olB4mfA_4aG-BBfn8-13" value="Fabric-SDK-Go" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="465" y="280" width="190" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-14" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="40" width="530" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-16" value="链码管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="190" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-18" value="组织用户管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="314" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-19" value="联盟初始化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="190" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-20" value="通道创建" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="314" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-21" value="组织创建" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="440" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-22" value="组织加入通道" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="561" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-23" value="浏览器模块" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="440" y="130" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="k36olB4mfA_4aG-BBfn8-24" value="跨链模块" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="561" y="130" width="100" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
